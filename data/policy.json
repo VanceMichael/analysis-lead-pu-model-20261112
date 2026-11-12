@@ -1,0 +1,314 @@
+{
+  "features": [
+    "size",
+    "engagement",
+    "source"
+  ],
+  "capacity": 10,
+  "reviewSample": [
+    {
+      "company": "a0",
+      "size": 10,
+      "engagement": 0,
+      "source": "expo",
+      "positive": true,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a1",
+      "size": 11,
+      "engagement": 1,
+      "source": "web",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a2",
+      "size": 12,
+      "engagement": 2,
+      "source": "expo",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a3",
+      "size": 13,
+      "engagement": 3,
+      "source": "web",
+      "positive": true,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a4",
+      "size": 14,
+      "engagement": 4,
+      "source": "expo",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a5",
+      "size": 15,
+      "engagement": 5,
+      "source": "web",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a6",
+      "size": 16,
+      "engagement": 6,
+      "source": "expo",
+      "positive": true,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a7",
+      "size": 17,
+      "engagement": 7,
+      "source": "web",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a8",
+      "size": 18,
+      "engagement": 8,
+      "source": "expo",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a9",
+      "size": 19,
+      "engagement": 0,
+      "source": "web",
+      "positive": true,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a10",
+      "size": 20,
+      "engagement": 1,
+      "source": "expo",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a11",
+      "size": 21,
+      "engagement": 2,
+      "source": "web",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a12",
+      "size": 22,
+      "engagement": 3,
+      "source": "expo",
+      "positive": true,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a13",
+      "size": 23,
+      "engagement": 4,
+      "source": "web",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a14",
+      "size": 24,
+      "engagement": 5,
+      "source": "expo",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a15",
+      "size": 25,
+      "engagement": 6,
+      "source": "web",
+      "positive": true,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a16",
+      "size": 26,
+      "engagement": 7,
+      "source": "expo",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a17",
+      "size": 27,
+      "engagement": 8,
+      "source": "web",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a18",
+      "size": 28,
+      "engagement": 0,
+      "source": "expo",
+      "positive": true,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a19",
+      "size": 29,
+      "engagement": 1,
+      "source": "web",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a20",
+      "size": 30,
+      "engagement": 2,
+      "source": "expo",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a21",
+      "size": 31,
+      "engagement": 3,
+      "source": "web",
+      "positive": true,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a22",
+      "size": 32,
+      "engagement": 4,
+      "source": "expo",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a23",
+      "size": 33,
+      "engagement": 5,
+      "source": "web",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a24",
+      "size": 34,
+      "engagement": 6,
+      "source": "expo",
+      "positive": true,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a25",
+      "size": 35,
+      "engagement": 7,
+      "source": "web",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a26",
+      "size": 36,
+      "engagement": 8,
+      "source": "expo",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a27",
+      "size": 37,
+      "engagement": 0,
+      "source": "web",
+      "positive": true,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a28",
+      "size": 38,
+      "engagement": 1,
+      "source": "expo",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    },
+    {
+      "company": "a29",
+      "size": 39,
+      "engagement": 2,
+      "source": "web",
+      "positive": false,
+      "probability": 0.2,
+      "score_at": 40,
+      "known_at": 10
+    }
+  ],
+  "priorRange": [
+    0.1,
+    0.4
+  ]
+}

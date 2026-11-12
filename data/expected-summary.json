@@ -1,0 +1,17 @@
+[
+  {
+    "key": "negative",
+    "count": 24,
+    "sum": 96
+  },
+  {
+    "key": "positive",
+    "count": 24,
+    "sum": 96
+  },
+  {
+    "key": "unlabeled",
+    "count": 48,
+    "sum": 183
+  }
+]
