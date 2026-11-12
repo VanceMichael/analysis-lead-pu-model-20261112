@@ -13,7 +13,7 @@ label 取 positive/negative/unlabeled；reviewProbability 为独立审阅抽样�
 npm ci --ignore-scripts --no-audit --no-fund --offline
 npm run build
 npm test
-npm start
+npm run summary
 node src/cli.js inspect --input data/records.json
 node src/cli.js summary --input data/records.json --out var/summary.json
 npm run demo
