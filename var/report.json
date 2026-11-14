@@ -1,0 +1,661 @@
+{
+  "artifactIntegrity": "74da7320e314576de707de50f61e2b7d4da6d6f2202ea631244acfeea7250293",
+  "artifactVersion": 1,
+  "assumptions": {
+    "auditNotUsedAsTrainingRows": true,
+    "divisorIsLabelingPropensity": true,
+    "featuresVisibleAtScoreAt": [
+      "size",
+      "engagement",
+      "source"
+    ],
+    "negativesExcludedFromFit": true,
+    "priorExternalToUnlabeled": true,
+    "sc": "single-training-set：在每个来源层内，正例被标注的概率与特征无关"
+  },
+  "calibrated": false,
+  "command": "train",
+  "degraded": true,
+  "diagnostics": {
+    "assumptions": {
+      "calibrationStable": true,
+      "eIdentified": true,
+      "labeledPositives": 18,
+      "minCalibrationPositives": 10,
+      "plausible": false,
+      "priorUsable": true,
+      "reasons": [
+        "至少一个来源的标注倾向 e 点估计超过 1，按定义与“正例随机被标注”矛盾",
+        "各来源标注倾向极差 1.5000 超过容差 0.25",
+        "标注倾向的置信上界超过 1，说明该来源的标注机制无法识别"
+      ],
+      "scViolated": true
+    },
+    "auditPrior": {
+      "available": true,
+      "global": {
+        "effectiveN": 30,
+        "estimate": 0.3333333333333333,
+        "interval": {
+          "high": 0.5121994835545616,
+          "low": 0.19230498083676134
+        },
+        "positives": 10,
+        "rows": 30,
+        "totalWeight": 150,
+        "weightedPositives": 50
+      },
+      "perSource": [
+        {
+          "effectiveN": 15,
+          "estimate": 0.3333333333333333,
+          "interval": {
+            "high": 0.5828645226148023,
+            "low": 0.1517632443971473
+          },
+          "positives": 5,
+          "rows": 15,
+          "source": "expo",
+          "weightedPositives": 25,
+          "weightedRows": 75
+        },
+        {
+          "effectiveN": 15,
+          "estimate": 0.3333333333333333,
+          "interval": {
+            "high": 0.5828645226148023,
+            "low": 0.1517632443971473
+          },
+          "positives": 5,
+          "rows": 15,
+          "source": "web",
+          "weightedPositives": 25,
+          "weightedRows": 75
+        }
+      ],
+      "totalRows": 30,
+      "weightedRows": 150
+    },
+    "confirmedNegativeDiagnostic": {
+      "available": true,
+      "basis": "uncalibrated_rank_at_threshold",
+      "flagged": 0,
+      "note": "确认负例来自既有回访选择，此比例只作偏倚诊断，不代表总体真负率。",
+      "populationEstimate": false,
+      "rows": 18
+    },
+    "counts": {
+      "test": {
+        "negative": 6,
+        "positive": 6,
+        "rows": 24,
+        "unlabeled": 12
+      },
+      "train": {
+        "negative": 18,
+        "positive": 18,
+        "rows": 72,
+        "unlabeled": 36
+      }
+    },
+    "evaluation": {
+      "auc": {
+        "estimate": 0.44,
+        "weighting": "inverse_probability"
+      },
+      "available": true,
+      "calibration": "未校准",
+      "capacity": 10,
+      "capacityPrecision": {
+        "estimate": 0.3,
+        "interval": {
+          "high": 0.47875787458714947,
+          "low": 0.1666474826824379
+        },
+        "note": "回访容量内选中企业的加权正例比例",
+        "weightedDenominator": 50,
+        "weightedNumerator": 15
+      },
+      "effectiveN": 30,
+      "positiveCoverageInCapacity": {
+        "estimate": 0.3,
+        "interval": {
+          "high": 0.47875787458714947,
+          "low": 0.1666474826824379
+        },
+        "weightedDenominator": 50,
+        "weightedNumerator": 15
+      },
+      "positives": 10,
+      "precision": {
+        "basis": "capacity_selection",
+        "estimate": 0.3,
+        "interval": {
+          "high": 0.47875787458714947,
+          "low": 0.1666474826824379
+        },
+        "weightedDenominator": 50
+      },
+      "precisionNote": "未校准排序无概率阈值，精确率按回访容量内选中企业的加权正例比例计算",
+      "recall": {
+        "basis": "capacity_selection",
+        "estimate": 0.3,
+        "interval": {
+          "high": 0.47875787458714947,
+          "low": 0.1666474826824379
+        },
+        "weightedDenominator": 50
+      },
+      "rows": 30,
+      "scoredAs": "uncalibrated_rank",
+      "threshold": null,
+      "tnrNote": "真负率只在确认负例上定义；普通未标注行不用于计算真负率。",
+      "trueNegativeRate": null,
+      "unlabeledRowsUsedForTnr": false,
+      "weightedPositives": 50,
+      "weightedRows": 150,
+      "weighting": "inverse_probability"
+    },
+    "excludedFromFit": {
+      "auditReason": "审阅样本只用于先验估计与验证，不并入普通训练行",
+      "auditRows": 30,
+      "confirmedNegatives": 18,
+      "reason": "确认负例来自既有回访选择，不作为 PU 拟合标签"
+    },
+    "labelPropensity": {
+      "anyImpossible": true,
+      "calibration": "SC 下辅助分数估计 P(已标注正例|x)=e·P(y=1|x)，故 P(y=1|x)=g(x)/e；除以类先验 π 只有当 e=1 时才成立",
+      "concept": "e(source) = P(observed positive label | source) / P(true positive | source)",
+      "conflict": true,
+      "impossibleSignificant": false,
+      "perSource": [
+        {
+          "e": 1.5,
+          "eInterval": {
+            "high": 3.2946053702671008,
+            "low": 0.8578322759411368
+          },
+          "labelRate": 0.5,
+          "labeledNegatives": 0,
+          "labeledPositives": 18,
+          "prior": 0.3333333333333333,
+          "priorInterval": {
+            "high": 0.5828645226148023,
+            "low": 0.1517632443971473
+          },
+          "rows": 36,
+          "source": "expo",
+          "status": "impossible"
+        },
+        {
+          "e": 0,
+          "eInterval": {
+            "high": 0,
+            "low": 0
+          },
+          "labelRate": 0,
+          "labeledNegatives": 18,
+          "labeledPositives": 0,
+          "prior": 0.3333333333333333,
+          "priorInterval": {
+            "high": 0.5828645226148023,
+            "low": 0.1517632443971473
+          },
+          "rows": 36,
+          "source": "web",
+          "status": "zeroLabeling"
+        }
+      ],
+      "plausible": false,
+      "pooled": {
+        "e": 0.75,
+        "expectedPositiveMass": 24,
+        "interval": {
+          "high": 1.6473026851335504,
+          "low": 0.42891613797056843
+        },
+        "labeledPositives": 18,
+        "rows": 72
+      },
+      "scAssumption": "正例随机被标注（single-training-set SC）",
+      "source": "main labeled-positive rate divided by audit prior",
+      "spread": 1.5,
+      "tolerance": 0.25,
+      "upperExceedsOne": true
+    },
+    "priorSelection": {
+      "auditEstimate": 0.3333333333333333,
+      "degenerate": false,
+      "estimate": 0.3333333333333333,
+      "fallback": false,
+      "interval": {
+        "high": 0.5121994835545616,
+        "low": 0.19230498083676134
+      },
+      "source": "audit_weighted_positive_rate",
+      "withinRange": true
+    },
+    "split": {
+      "auditDisjointTest": true,
+      "auditDisjointTrain": true,
+      "auditRows": 30,
+      "companies": {
+        "test": 24,
+        "total": 96,
+        "train": 72
+      },
+      "companyDisjointTrainTest": true,
+      "disjoint": {
+        "auditCompanies": [
+          "a0",
+          "a1",
+          "a10",
+          "a11",
+          "a12",
+          "a13",
+          "a14",
+          "a15",
+          "a16",
+          "a17",
+          "a18",
+          "a19",
+          "a2",
+          "a20",
+          "a21",
+          "a22",
+          "a23",
+          "a24",
+          "a25",
+          "a26",
+          "a27",
+          "a28",
+          "a29",
+          "a3",
+          "a4",
+          "a5",
+          "a6",
+          "a7",
+          "a8",
+          "a9"
+        ],
+        "testCompanies": [
+          "c29",
+          "c34",
+          "c35",
+          "c36",
+          "c38",
+          "c39",
+          "c40",
+          "c41",
+          "c42",
+          "c43",
+          "c44",
+          "c45",
+          "c48",
+          "c49",
+          "c50",
+          "c51",
+          "c52",
+          "c53",
+          "c54",
+          "c55",
+          "c56",
+          "c57",
+          "c58",
+          "c59"
+        ],
+        "trainCompanies": [
+          "c0",
+          "c1",
+          "c10",
+          "c11",
+          "c12",
+          "c13",
+          "c14",
+          "c15",
+          "c16",
+          "c17",
+          "c18",
+          "c19",
+          "c2",
+          "c20",
+          "c21",
+          "c22",
+          "c23",
+          "c24",
+          "c25",
+          "c26",
+          "c27",
+          "c28",
+          "c3",
+          "c30",
+          "c31",
+          "c32",
+          "c33",
+          "c37",
+          "c4",
+          "c46",
+          "c47",
+          "c5",
+          "c6",
+          "c60",
+          "c61",
+          "c62",
+          "c63",
+          "c64",
+          "c65",
+          "c66",
+          "c67",
+          "c68",
+          "c69",
+          "c7",
+          "c70",
+          "c71",
+          "c72",
+          "c73",
+          "c74",
+          "c75",
+          "c76",
+          "c77",
+          "c78",
+          "c79",
+          "c8",
+          "c80",
+          "c81",
+          "c82",
+          "c83",
+          "c84",
+          "c85",
+          "c86",
+          "c87",
+          "c88",
+          "c89",
+          "c9",
+          "c90",
+          "c91",
+          "c92",
+          "c93",
+          "c94",
+          "c95"
+        ]
+      },
+      "testRows": 24,
+      "trainRows": 72
+    },
+    "warnings": [
+      "sc_assumption_violated",
+      "prior_source_conflict",
+      "label_propensity_impossible",
+      "degraded_to_ranking"
+    ]
+  },
+  "evaluation": {
+    "auc": {
+      "estimate": 0.44,
+      "weighting": "inverse_probability"
+    },
+    "available": true,
+    "calibration": "未校准",
+    "capacity": 10,
+    "capacityPrecision": {
+      "estimate": 0.3,
+      "interval": {
+        "high": 0.47875787458714947,
+        "low": 0.1666474826824379
+      },
+      "note": "回访容量内选中企业的加权正例比例",
+      "weightedDenominator": 50,
+      "weightedNumerator": 15
+    },
+    "effectiveN": 30,
+    "positiveCoverageInCapacity": {
+      "estimate": 0.3,
+      "interval": {
+        "high": 0.47875787458714947,
+        "low": 0.1666474826824379
+      },
+      "weightedDenominator": 50,
+      "weightedNumerator": 15
+    },
+    "positives": 10,
+    "precision": {
+      "basis": "capacity_selection",
+      "estimate": 0.3,
+      "interval": {
+        "high": 0.47875787458714947,
+        "low": 0.1666474826824379
+      },
+      "weightedDenominator": 50
+    },
+    "precisionNote": "未校准排序无概率阈值，精确率按回访容量内选中企业的加权正例比例计算",
+    "recall": {
+      "basis": "capacity_selection",
+      "estimate": 0.3,
+      "interval": {
+        "high": 0.47875787458714947,
+        "low": 0.1666474826824379
+      },
+      "weightedDenominator": 50
+    },
+    "rows": 30,
+    "scoredAs": "uncalibrated_rank",
+    "threshold": null,
+    "tnrNote": "真负率只在确认负例上定义；普通未标注行不用于计算真负率。",
+    "trueNegativeRate": null,
+    "unlabeledRowsUsedForTnr": false,
+    "weightedPositives": 50,
+    "weightedRows": 150,
+    "weighting": "inverse_probability"
+  },
+  "limitations": [
+    "分数仅用于安排人工回访排序，不是成交概率，也不应直接作为销售结论。",
+    "特征只使用 score_at 前可取的属性（本数据快照中为 size/engagement/source）；若上游在 score_at 之后回填属性，本模型无法检测。",
+    "普通未标注行不作为负例，也不用于计算真负率；确认负例不参与拟合。",
+    "已确认负例来自销售既有回访选择，存在选择偏倚，因此模型不把“未回访”当成“失败”。",
+    "SC“正例随机被标注”假设不成立或先验不可用：输出已降级为未校准排序，risk 字段为 null，不得解释为概率。",
+    "请按 artifact.sensitivity.perSource 的来源层敏感性范围理解不确定性，并用新一轮分层审阅补足数据。"
+  ],
+  "modelVersion": 1,
+  "policyFingerprint": "428ee8a2774e29143e31c142b7a36a491126bb8f70df4c4bd2eaaeea03bba7d1",
+  "prior": 0.3333333333333333,
+  "priorSelection": {
+    "auditEstimate": 0.3333333333333333,
+    "degenerate": false,
+    "estimate": 0.3333333333333333,
+    "fallback": false,
+    "interval": {
+      "high": 0.5121994835545616,
+      "low": 0.19230498083676134
+    },
+    "source": "audit_weighted_positive_rate",
+    "withinRange": true
+  },
+  "queue": {
+    "candidates": 12,
+    "capacity": 10,
+    "note": "按模型排序的人工回访候选；不是成交概率，也不替代销售决策。因标注机制冲突，排序按来源层内分位交叉，避免单一来源占满容量。",
+    "queue": [
+      {
+        "action": "human_review",
+        "company": "c34",
+        "id": "r0034",
+        "rank": 1,
+        "risk": null,
+        "score": 0.603969,
+        "scoreKind": "uncalibrated_rank",
+        "source": "expo"
+      },
+      {
+        "action": "human_review",
+        "company": "c29",
+        "id": "r0029",
+        "rank": 2,
+        "risk": null,
+        "score": 0.074549,
+        "scoreKind": "uncalibrated_rank",
+        "source": "web"
+      },
+      {
+        "action": "human_review",
+        "company": "c42",
+        "id": "r0042",
+        "rank": 3,
+        "risk": null,
+        "score": 0.460502,
+        "scoreKind": "uncalibrated_rank",
+        "source": "expo"
+      },
+      {
+        "action": "human_review",
+        "company": "c53",
+        "id": "r0053",
+        "rank": 4,
+        "risk": null,
+        "score": 0.071492,
+        "scoreKind": "uncalibrated_rank",
+        "source": "web"
+      },
+      {
+        "action": "human_review",
+        "company": "c58",
+        "id": "r0058",
+        "rank": 5,
+        "risk": null,
+        "score": 0.459262,
+        "scoreKind": "uncalibrated_rank",
+        "source": "expo"
+      },
+      {
+        "action": "human_review",
+        "company": "c41",
+        "id": "r0041",
+        "rank": 6,
+        "risk": null,
+        "score": 0.063927,
+        "scoreKind": "uncalibrated_rank",
+        "source": "web"
+      },
+      {
+        "action": "human_review",
+        "company": "c38",
+        "id": "r0038",
+        "rank": 7,
+        "risk": null,
+        "score": 0.444817,
+        "scoreKind": "uncalibrated_rank",
+        "source": "expo"
+      },
+      {
+        "action": "human_review",
+        "company": "c57",
+        "id": "r0057",
+        "rank": 8,
+        "risk": null,
+        "score": 0.061815,
+        "scoreKind": "uncalibrated_rank",
+        "source": "web"
+      },
+      {
+        "action": "human_review",
+        "company": "c50",
+        "id": "r0050",
+        "rank": 9,
+        "risk": null,
+        "score": 0.438256,
+        "scoreKind": "uncalibrated_rank",
+        "source": "expo"
+      },
+      {
+        "action": "human_review",
+        "company": "c49",
+        "id": "r0049",
+        "rank": 10,
+        "risk": null,
+        "score": 0.057905,
+        "scoreKind": "uncalibrated_rank",
+        "source": "web"
+      }
+    ],
+    "ranking": "balanced_source"
+  },
+  "reviewSampleVersion": "9226af745b9dfed8d62417b434ff62fb6aba2638c247626f9514d1faa58c9698",
+  "sensitivity": {
+    "divisorKind": "labeling_propensity",
+    "globalDivisorBounds": [
+      {
+        "label": "priorRange.low",
+        "note": "业务先验范围，不是标注倾向",
+        "value": 0.1
+      },
+      {
+        "label": "priorRange.high",
+        "note": "业务先验范围，不是标注倾向",
+        "value": 0.4
+      },
+      {
+        "label": "pooledLabelingPropensity",
+        "value": 0.75
+      }
+    ],
+    "note": "SC 不成立时以来源层的标注倾向区间给出敏感性范围；分数不是成交概率。",
+    "perSource": [
+      {
+        "labelPropensity": 1.5,
+        "labelPropensityInterval": {
+          "high": 3.2946053702671008,
+          "low": 0.8578322759411368
+        },
+        "labelRate": 0.5,
+        "prior": 0.3333333333333333,
+        "priorInterval": {
+          "high": 0.5828645226148023,
+          "low": 0.1517632443971473
+        },
+        "riskUnderPropensityRange": [
+          {
+            "divisor": 0.857832,
+            "label": "expo.e.low",
+            "riskSummary": {
+              "high": 0.597564,
+              "low": 0.067739,
+              "mean": 0.308665,
+              "rows": 36
+            }
+          },
+          {
+            "divisor": 3.294605,
+            "label": "expo.e.high",
+            "riskSummary": {
+              "high": null,
+              "low": null,
+              "mean": null,
+              "note": "除数不可用于校准",
+              "rows": 36
+            }
+          }
+        ],
+        "rows": 36,
+        "source": "expo",
+        "status": "impossible"
+      },
+      {
+        "labelPropensity": 0,
+        "labelPropensityInterval": {
+          "high": 0,
+          "low": 0
+        },
+        "labelRate": 0,
+        "prior": 0.3333333333333333,
+        "priorInterval": {
+          "high": 0.5828645226148023,
+          "low": 0.1517632443971473
+        },
+        "riskUnderPropensityRange": [],
+        "rows": 36,
+        "source": "web",
+        "status": "zeroLabeling"
+      }
+    ],
+    "unit": "unlabeled_training_rows"
+  }
+}

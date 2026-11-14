@@ -1,0 +1,26 @@
+{
+  "count": 96,
+  "groupBy": "label",
+  "groups": [
+    {
+      "companies": 24,
+      "count": 24,
+      "key": "negative",
+      "sum": 96
+    },
+    {
+      "companies": 24,
+      "count": 24,
+      "key": "positive",
+      "sum": 96
+    },
+    {
+      "companies": 48,
+      "count": 48,
+      "key": "unlabeled",
+      "sum": 183
+    }
+  ],
+  "inputFingerprint": "467e17a47275cca459565ab5a2b9777eb901aececc0f09b15649662b19fa9fa2",
+  "valueField": "engagement"
+}

@@ -5,6 +5,15 @@
     "source"
   ],
   "capacity": 10,
+  "priorRange": [
+    0.1,
+    0.4
+  ],
+  "scMechanism": "bernoulli",
+  "scTolerance": 0.25,
+  "minPositives": 3,
+  "minCalibrationPositives": 10,
+  "l2": 1,
   "reviewSample": [
     {
       "company": "a0",
@@ -306,9 +315,5 @@
       "score_at": 40,
       "known_at": 10
     }
-  ],
-  "priorRange": [
-    0.1,
-    0.4
   ]
 }

@@ -1,0 +1,303 @@
+{
+  "artifactVersion": 1,
+  "assumptions": {
+    "capacity": 10,
+    "features": [
+      "size",
+      "engagement",
+      "source"
+    ],
+    "l2": 1,
+    "minCalibrationPositives": 10,
+    "minPositives": 3,
+    "priorRange": [
+      0.1,
+      0.4
+    ],
+    "scMechanism": "bernoulli",
+    "scTolerance": 0.25,
+    "scoreVisibility": "仅 score_at 前可见属性；label/reviewProbability/id/company/known_at 禁止"
+  },
+  "datasetFingerprint": "467e17a47275cca459565ab5a2b9777eb901aececc0f09b15649662b19fa9fa2",
+  "fittedAt": null,
+  "integrity": "74da7320e314576de707de50f61e2b7d4da6d6f2202ea631244acfeea7250293",
+  "model": {
+    "assumptions": {
+      "auditNotUsedAsTrainingRows": true,
+      "divisorIsLabelingPropensity": true,
+      "featuresVisibleAtScoreAt": [
+        "size",
+        "engagement",
+        "source"
+      ],
+      "negativesExcludedFromFit": true,
+      "priorExternalToUnlabeled": true,
+      "sc": "single-training-set：在每个来源层内，正例被标注的概率与特征无关"
+    },
+    "auditVersion": "9226af745b9dfed8d62417b434ff62fb6aba2638c247626f9514d1faa58c9698",
+    "calibrated": false,
+    "calibrationDivisor": null,
+    "coefficients": [
+      -1.533252288633693,
+      0.08478275306770902,
+      0.13523572389350152,
+      0.09556529169193602,
+      0.0196300121588414,
+      1.2486343837568086,
+      -1.2486343837568097
+    ],
+    "datasetFingerprint": "467e17a47275cca459565ab5a2b9777eb901aececc0f09b15649662b19fa9fa2",
+    "degraded": true,
+    "features": {
+      "categories": {
+        "source": [
+          "expo",
+          "web"
+        ]
+      },
+      "design": {
+        "oneHot": true,
+        "quadratic": true
+      },
+      "designNames": [
+        "size",
+        "size^2",
+        "engagement",
+        "engagement^2",
+        "source=expo",
+        "source=web"
+      ],
+      "features": [
+        "size",
+        "engagement",
+        "source"
+      ],
+      "numeric": [
+        {
+          "mean": 26.25925925925926,
+          "name": "size",
+          "scale": 10.116650174919814
+        },
+        {
+          "mean": 3.8703703703703702,
+          "name": "engagement",
+          "scale": 2.621005829514846
+        }
+      ],
+      "types": {
+        "engagement": "number",
+        "score_at": "integer",
+        "size": "number",
+        "source": "category"
+      },
+      "unknownCategory": "reject",
+      "version": 1
+    },
+    "fitted": {
+      "converged": true,
+      "designWidth": 7,
+      "rows": 54
+    },
+    "interceptIndex": 0,
+    "kind": "positive-unlabeled-risk",
+    "labelingPropensity": {
+      "anyImpossible": true,
+      "calibration": "SC 下辅助分数估计 P(已标注正例|x)=e·P(y=1|x)，故 P(y=1|x)=g(x)/e；除以类先验 π 只有当 e=1 时才成立",
+      "concept": "e(source) = P(observed positive label | source) / P(true positive | source)",
+      "conflict": true,
+      "interval": {
+        "high": 1.6473026851335504,
+        "low": 0.42891613797056843
+      },
+      "perSource": [
+        {
+          "e": 1.5,
+          "eInterval": {
+            "high": 3.2946053702671008,
+            "low": 0.8578322759411368
+          },
+          "labelRate": 0.5,
+          "labeledNegatives": 0,
+          "labeledPositives": 18,
+          "prior": 0.3333333333333333,
+          "priorInterval": {
+            "high": 0.5828645226148023,
+            "low": 0.1517632443971473
+          },
+          "rows": 36,
+          "source": "expo",
+          "status": "impossible"
+        },
+        {
+          "e": 0,
+          "eInterval": {
+            "high": 0,
+            "low": 0
+          },
+          "labelRate": 0,
+          "labeledNegatives": 18,
+          "labeledPositives": 0,
+          "prior": 0.3333333333333333,
+          "priorInterval": {
+            "high": 0.5828645226148023,
+            "low": 0.1517632443971473
+          },
+          "rows": 36,
+          "source": "web",
+          "status": "zeroLabeling"
+        }
+      ],
+      "pooled": 0.75,
+      "pooledDivisorUsable": true,
+      "spread": 1.5,
+      "tolerance": 0.25
+    },
+    "modelVersion": 1,
+    "policyFingerprint": "428ee8a2774e29143e31c142b7a36a491126bb8f70df4c4bd2eaaeea03bba7d1",
+    "prior": 0.3333333333333333,
+    "priorSelection": {
+      "auditEstimate": 0.3333333333333333,
+      "degenerate": false,
+      "estimate": 0.3333333333333333,
+      "fallback": false,
+      "interval": {
+        "high": 0.5121994835545616,
+        "low": 0.19230498083676134
+      },
+      "source": "audit_weighted_positive_rate",
+      "withinRange": true
+    },
+    "riskFunction": {
+      "calibrated": false,
+      "divisor": null,
+      "formula": "sigmoid(beta·x)",
+      "interpretation": "仅保证排序；分数未经校准，不得解释为成交概率或正例概率",
+      "kind": "uncalibrated_rank"
+    },
+    "sensitivity": {
+      "divisorKind": "labeling_propensity",
+      "globalDivisorBounds": [
+        {
+          "label": "priorRange.low",
+          "note": "业务先验范围，不是标注倾向",
+          "value": 0.1
+        },
+        {
+          "label": "priorRange.high",
+          "note": "业务先验范围，不是标注倾向",
+          "value": 0.4
+        },
+        {
+          "label": "pooledLabelingPropensity",
+          "value": 0.75
+        }
+      ],
+      "note": "SC 不成立时以来源层的标注倾向区间给出敏感性范围；分数不是成交概率。",
+      "perSource": [
+        {
+          "labelPropensity": 1.5,
+          "labelPropensityInterval": {
+            "high": 3.2946053702671008,
+            "low": 0.8578322759411368
+          },
+          "labelRate": 0.5,
+          "prior": 0.3333333333333333,
+          "priorInterval": {
+            "high": 0.5828645226148023,
+            "low": 0.1517632443971473
+          },
+          "riskUnderPropensityRange": [
+            {
+              "divisor": 0.857832,
+              "label": "expo.e.low",
+              "riskSummary": {
+                "high": 0.597564,
+                "low": 0.067739,
+                "mean": 0.308665,
+                "rows": 36
+              }
+            },
+            {
+              "divisor": 3.294605,
+              "label": "expo.e.high",
+              "riskSummary": {
+                "high": null,
+                "low": null,
+                "mean": null,
+                "note": "除数不可用于校准",
+                "rows": 36
+              }
+            }
+          ],
+          "rows": 36,
+          "source": "expo",
+          "status": "impossible"
+        },
+        {
+          "labelPropensity": 0,
+          "labelPropensityInterval": {
+            "high": 0,
+            "low": 0
+          },
+          "labelRate": 0,
+          "prior": 0.3333333333333333,
+          "priorInterval": {
+            "high": 0.5828645226148023,
+            "low": 0.1517632443971473
+          },
+          "riskUnderPropensityRange": [],
+          "rows": 36,
+          "source": "web",
+          "status": "zeroLabeling"
+        }
+      ],
+      "unit": "unlabeled_training_rows"
+    }
+  },
+  "preprocessing": {
+    "categories": {
+      "source": [
+        "expo",
+        "web"
+      ]
+    },
+    "design": {
+      "oneHot": true,
+      "quadratic": true
+    },
+    "designNames": [
+      "size",
+      "size^2",
+      "engagement",
+      "engagement^2",
+      "source=expo",
+      "source=web"
+    ],
+    "features": [
+      "size",
+      "engagement",
+      "source"
+    ],
+    "numeric": [
+      {
+        "mean": 26.25925925925926,
+        "name": "size",
+        "scale": 10.116650174919814
+      },
+      {
+        "mean": 3.8703703703703702,
+        "name": "engagement",
+        "scale": 2.621005829514846
+      }
+    ],
+    "types": {
+      "engagement": "number",
+      "score_at": "integer",
+      "size": "number",
+      "source": "category"
+    },
+    "unknownCategory": "reject",
+    "version": 1
+  },
+  "reviewSampleVersion": "9226af745b9dfed8d62417b434ff62fb6aba2638c247626f9514d1faa58c9698"
+}
